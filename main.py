@@ -24,6 +24,10 @@ ENTRY = (
 
 
 def main() -> None:
+    if not 1 <= len(ENTRY) <= 200:
+        raise SystemExit(
+            f"motto must be 1-200 characters, got {len(ENTRY)}"
+        )
     output_dir = Path(os.environ.get("MAKEFUN_OUTPUT_DIR", "/output"))
     output_dir.mkdir(parents=True, exist_ok=True)
     (output_dir / "entry.txt").write_text(ENTRY, encoding="utf-8")
